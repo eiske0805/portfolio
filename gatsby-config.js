@@ -26,7 +26,7 @@ module.exports = {
         background_color: `#4dbdd1`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
-        theme_color: `#4dbdd1`,
+        // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
