@@ -23,7 +23,7 @@ const Porfolio: VFC = memo(() => {
   return (
     <Layout color={color}>
       <Seo title="Portfolio" />
-      <Grid templateColumns="repeat(6, 1fr)" gap="10">
+      <Grid templateColumns="repeat(6, 1fr)" gap="10" mb="20">
         {routes.map((route, index) => (
           <GridItem key={index} colSpan={{ base: 6, sm: 3, lg: 2 }} mb="6">
             {route.children}
