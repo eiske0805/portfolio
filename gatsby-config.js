@@ -22,6 +22,7 @@ module.exports = {
         path: `${__dirname}/works`,
       },
     },
+    "gatsby-plugin-mdx",
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -57,5 +58,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
+    `gatsby-plugin-typegen`,
   ],
 }
