@@ -31,7 +31,13 @@ const SnsNavi: VFC = memo(() => {
   return (
     <InView triggerOnce={true}>
       {({ inView, ref }) => (
-        <Box as="nav" px={{ base: 4, lg: 10 }} pb="20" className="sns">
+        <Box
+          as="nav"
+          px={{ base: 4, lg: 10 }}
+          pb="20"
+          className="sns"
+          zIndex="200"
+        >
           <Flex
             as="ul"
             justify="flex-end"

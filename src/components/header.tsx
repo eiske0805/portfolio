@@ -12,7 +12,7 @@ const Header: VFC = memo(() => (
     position="fixed"
     top="0"
     w="100vw"
-    zIndex="100"
+    zIndex="200"
   >
     <Flex
       justify={{ base: "center", md: "flex-start" }}

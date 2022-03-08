@@ -4,6 +4,7 @@ import { Box, Flex, Spacer } from "@chakra-ui/react"
 
 import Header from "./header"
 import SnsNavi from "./sns/snsNavi"
+import CanvasBg from "./canvasBg"
 
 type Props = {
   children: ReactNode
@@ -22,7 +23,14 @@ const Layout: VFC<Props> = memo(props => {
         minH="100vh"
         mx="auto"
       >
-        <Box as="main" px={{ base: 4, lg: 10 }} pt={{ base: 28, md: 40 }}>
+        <CanvasBg />
+        <Box
+          as="main"
+          px={{ base: 4, lg: 10 }}
+          pt={{ base: 28, md: 40 }}
+          // position="absolute"
+          zIndex="100"
+        >
           {children}
         </Box>
         <Spacer />
