@@ -28,7 +28,6 @@ const Layout: VFC<Props> = memo(props => {
           as="main"
           px={{ base: 4, lg: 10 }}
           pt={{ base: 28, md: 40 }}
-          // position="absolute"
           zIndex="100"
         >
           {children}
