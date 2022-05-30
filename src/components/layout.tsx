@@ -15,26 +15,17 @@ const Layout: VFC<Props> = memo(props => {
   const { children, color } = props
   return (
     <Box bgColor={color}>
+      <CanvasBg />
       <Header />
-      <Flex
-        direction="column"
-        bgColor={color}
-        maxW="1280px"
-        minH="100vh"
-        mx="auto"
-      >
-        <CanvasBg />
-        <Box
-          as="main"
-          px={{ base: 4, lg: 10 }}
-          pt={{ base: 28, md: 40 }}
-          zIndex="100"
-        >
-          {children}
-        </Box>
-        <Spacer />
+      <Box as="main" maxW="1280px" minH="100vh" mx="auto">
         <SnsNavi />
-      </Flex>
+        <Flex direction="column" bgColor={color}>
+          <Box px={{ base: 4, lg: 10 }} my={{ base: 28, md: 40 }} zIndex="100">
+            {children}
+          </Box>
+          <Spacer />
+        </Flex>
+      </Box>
     </Box>
   )
 })

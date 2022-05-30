@@ -17,7 +17,6 @@ const theme = extendTheme({
     cWhite: "#ffffff",
     cBlack: "#999",
     cGray: "#9e9e9e",
-    cOrange: "#ffb577",
     cCreem: "#FFF3DA",
     cPurple: "#A293C2",
   },

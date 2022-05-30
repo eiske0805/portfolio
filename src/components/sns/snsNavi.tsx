@@ -1,67 +1,45 @@
-import * as React from "react"
-import { memo, VFC } from "react"
-import { InView } from "react-intersection-observer"
-import { Flex, Link, Box } from "@chakra-ui/react"
+import React, { memo, VFC, Suspense } from "react"
+import { Flex, Box } from "@chakra-ui/react"
+import { Canvas } from "@react-three/fiber"
+import { useInView } from "react-intersection-observer"
 
-import TwitterSvg from "./twitterSvg"
-import InstagramSvg from "./instagramSvg"
-import GithubSvg from "./githubSvg"
-import MaleSvg from "./maleSvg"
-
-const routes = [
-  {
-    url: "https://twitter.com/eiske0805",
-    children: <TwitterSvg />,
-  },
-  {
-    url: "https://instagram.com/eiske0805",
-    children: <InstagramSvg />,
-  },
-  {
-    url: "https://github.com/eiske0805",
-    children: <GithubSvg />,
-  },
-  {
-    url: "mailto:eiske.take@gmail.com",
-    children: <MaleSvg />,
-  },
-]
+import Envelope from "./envelope"
+import Twitter from "./twitter"
+import Insta from "./insta"
+import Github from "./github"
 
 const SnsNavi: VFC = memo(() => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "-50px 0px",
+  })
+
   return (
-    <InView triggerOnce={true}>
-      {({ inView, ref }) => (
-        <Box
-          as="nav"
-          px={{ base: 4, lg: 10 }}
-          pb="20"
-          className="sns"
-          zIndex="200"
-        >
-          <Flex
-            as="ul"
-            justify="flex-end"
-            ref={ref}
-            className={inView ? "appear inview" : "appear"}
-          >
-            {routes.map(route => (
-              <Box
-                key={route.url}
-                as="li"
-                w="2rem"
-                h="2rem"
-                ml="0.5rem"
-                className="item"
-              >
-                <Link isExternal href={route.url}>
-                  {route.children}
-                </Link>
-              </Box>
-            ))}
-          </Flex>
+    <Box
+      as="nav"
+      px={{ base: 4, lg: 10 }}
+      pt={{ base: 8, md: 10 }}
+      className="sns"
+      zIndex="200"
+    >
+      <Flex
+        as="ul"
+        justify="flex-end"
+        ref={ref}
+        className={inView ? "appear inview" : "appear"}
+      >
+        <Box as="li" w="9.5rem" h="3rem" ml="0.5rem" className="item">
+          <Canvas camera={{ position: [0, 0, 0] }} linear={true}>
+            <Suspense fallback={null}>
+              <Github />
+              <Twitter />
+              <Insta />
+              <Envelope />
+            </Suspense>
+          </Canvas>
         </Box>
-      )}
-    </InView>
+      </Flex>
+    </Box>
   )
 })
 
