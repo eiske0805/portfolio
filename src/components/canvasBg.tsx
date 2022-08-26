@@ -76,7 +76,11 @@ const Particles = () => {
 const CanvasBg: VFC = memo(() => {
   return (
     <Box w="100vw" h="100vh" position="fixed" top="0" left="0">
-      <Canvas camera={{ position: [0, 0, 0.5] }} linear={true}>
+      <Canvas
+        dpr={window.devicePixelRatio}
+        camera={{ position: [0, 0, 0.5] }}
+        linear={true}
+      >
         <Particles />
       </Canvas>
     </Box>

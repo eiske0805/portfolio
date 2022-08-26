@@ -20,7 +20,7 @@ const HeroImage: VFC<Props> = memo(({ inView }) => {
         w={{ base: "60vw", md: "30vw", xl: "320px" }}
         h={{ base: "60vw", md: "30vw", xl: "320px" }}
       >
-        <Canvas className="root" linear={true}>
+        <Canvas dpr={window.devicePixelRatio} className="root" linear={true}>
           <Suspense fallback={null}>
             <HeroMesh />
           </Suspense>

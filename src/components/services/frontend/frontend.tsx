@@ -33,7 +33,11 @@ const Frontend: VFC = memo(() => {
         mb="10"
       >
         <Box className="item" w="100%" h="100%">
-          <Canvas camera={{ position: [0, 0, 13] }} linear={true}>
+          <Canvas
+            dpr={window.devicePixelRatio}
+            camera={{ position: [0, 0, 13] }}
+            linear={true}
+          >
             <Suspense fallback={null}>
               <CodeMesh />
             </Suspense>

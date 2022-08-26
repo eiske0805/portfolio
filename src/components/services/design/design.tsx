@@ -34,7 +34,11 @@ const Design: VFC = memo(() => {
         className={inView ? "appear right inview" : "appear right"}
       >
         <Box className="item" w="100%" h="100%">
-          <Canvas camera={{ position: [0, 0, 13] }} linear={true}>
+          <Canvas
+            dpr={window.devicePixelRatio}
+            camera={{ position: [0, 0, 13] }}
+            linear={true}
+          >
             <Suspense fallback={null}>
               <IpadMesh />
             </Suspense>

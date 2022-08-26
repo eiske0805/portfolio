@@ -29,7 +29,11 @@ const SnsNavi: VFC = memo(() => {
         className={inView ? "appear inview" : "appear"}
       >
         <Box as="li" w="9.5rem" h="3rem" ml="0.5rem" className="item">
-          <Canvas camera={{ position: [0, 0, 0] }} linear={true}>
+          <Canvas
+            dpr={window.devicePixelRatio}
+            camera={{ position: [0, 0, 0] }}
+            linear={true}
+          >
             <Suspense fallback={null}>
               <Github />
               <Twitter />
