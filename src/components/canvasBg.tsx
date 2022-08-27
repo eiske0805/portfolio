@@ -3,8 +3,9 @@ import { Canvas, useFrame, extend } from "@react-three/fiber"
 import { shaderMaterial } from "@react-three/drei"
 import * as THREE from "three"
 import glsl from "glslify"
-
 import { Box } from "@chakra-ui/react"
+
+import { isBrowser } from "../utils"
 
 const Particles = () => {
   let count = 300
@@ -74,13 +75,13 @@ const Particles = () => {
 }
 
 const CanvasBg: VFC = memo(() => {
+  let dpr = 1
+  if (isBrowser) {
+    dpr = window.devicePixelRatio
+  }
   return (
     <Box w="100vw" h="100vh" position="fixed" top="0" left="0">
-      <Canvas
-        dpr={window.devicePixelRatio}
-        camera={{ position: [0, 0, 0.5] }}
-        linear={true}
-      >
+      <Canvas dpr={dpr} camera={{ position: [0, 0, 0.5] }} linear={true}>
         <Particles />
       </Canvas>
     </Box>

@@ -4,8 +4,14 @@ import { Canvas } from "@react-three/fiber"
 import { useInView } from "react-intersection-observer"
 
 import IpadMesh from "./ipadMesh"
+import { isBrowser } from "../../../utils"
 
 const Design: VFC = memo(() => {
+  let dpr = 1
+  if (isBrowser) {
+    dpr = window.devicePixelRatio
+  }
+
   const uiDesign = "UI/UX\u00A0Design".split("")
 
   const { ref, inView } = useInView({
@@ -34,11 +40,7 @@ const Design: VFC = memo(() => {
         className={inView ? "appear right inview" : "appear right"}
       >
         <Box className="item" w="100%" h="100%">
-          <Canvas
-            dpr={window.devicePixelRatio}
-            camera={{ position: [0, 0, 13] }}
-            linear={true}
-          >
+          <Canvas dpr={dpr} camera={{ position: [0, 0, 13] }} linear={true}>
             <Suspense fallback={null}>
               <IpadMesh />
             </Suspense>

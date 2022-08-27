@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber"
 import { useInView } from "react-intersection-observer"
 
 import CodeMesh from "./codeMesh"
+import { isBrowser } from "../../../utils"
 
 const Frontend: VFC = memo(() => {
   const frontEnd = `Front-end`.split("")
@@ -13,6 +14,11 @@ const Frontend: VFC = memo(() => {
     triggerOnce: true,
     rootMargin: "-50px 0px",
   })
+
+  let dpr = 1
+  if (isBrowser) {
+    dpr = window.devicePixelRatio
+  }
 
   return (
     <Box
@@ -33,11 +39,7 @@ const Frontend: VFC = memo(() => {
         mb="10"
       >
         <Box className="item" w="100%" h="100%">
-          <Canvas
-            dpr={window.devicePixelRatio}
-            camera={{ position: [0, 0, 13] }}
-            linear={true}
-          >
+          <Canvas dpr={dpr} camera={{ position: [0, 0, 13] }} linear={true}>
             <Suspense fallback={null}>
               <CodeMesh />
             </Suspense>

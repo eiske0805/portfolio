@@ -7,12 +7,18 @@ import Envelope from "./envelope"
 import Twitter from "./twitter"
 import Insta from "./insta"
 import Github from "./github"
+import { isBrowser } from "../../utils"
 
 const SnsNavi: VFC = memo(() => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     rootMargin: "-50px 0px",
   })
+
+  let dpr = 1
+  if (isBrowser) {
+    dpr = window.devicePixelRatio
+  }
 
   return (
     <Box
@@ -29,11 +35,7 @@ const SnsNavi: VFC = memo(() => {
         className={inView ? "appear inview" : "appear"}
       >
         <Box as="li" w="9.5rem" h="3rem" ml="0.5rem" className="item">
-          <Canvas
-            dpr={window.devicePixelRatio}
-            camera={{ position: [0, 0, 0] }}
-            linear={true}
-          >
+          <Canvas dpr={dpr} camera={{ position: [0, 0, 0] }} linear={true}>
             <Suspense fallback={null}>
               <Github />
               <Twitter />

@@ -3,12 +3,18 @@ import { Box } from "@chakra-ui/react"
 import { Canvas } from "@react-three/fiber"
 
 import HeroMesh from "./heroMesh"
+import { isBrowser } from "../../utils"
 
 type Props = {
   inView: boolean
 }
 
 const HeroImage: VFC<Props> = memo(({ inView }) => {
+  let dpr = 1
+  if (isBrowser) {
+    dpr = window.devicePixelRatio
+  }
+
   return (
     <Box
       w={{ base: "100%", md: "30%" }}
@@ -20,7 +26,7 @@ const HeroImage: VFC<Props> = memo(({ inView }) => {
         w={{ base: "60vw", md: "30vw", xl: "320px" }}
         h={{ base: "60vw", md: "30vw", xl: "320px" }}
       >
-        <Canvas dpr={window.devicePixelRatio} className="root" linear={true}>
+        <Canvas dpr={dpr} className="root" linear={true}>
           <Suspense fallback={null}>
             <HeroMesh />
           </Suspense>
