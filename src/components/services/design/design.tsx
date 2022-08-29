@@ -73,7 +73,14 @@ const Design: VFC = memo(() => {
           fontSize={{ base: "1.25rem", lg: "1.5rem" }}
           className="item"
         >
-          Procreate
+          Illustrator
+        </Text>
+        <Text
+          as="p"
+          fontSize={{ base: "1.25rem", lg: "1.5rem" }}
+          className="item"
+        >
+          Photoshop
         </Text>
         <Text
           as="p"
@@ -88,6 +95,13 @@ const Design: VFC = memo(() => {
           className="item"
         >
           Affinity Photo
+        </Text>
+        <Text
+          as="p"
+          fontSize={{ base: "1.25rem", lg: "1.5rem" }}
+          className="item"
+        >
+          Procreate
         </Text>
       </Box>
     </Box>
